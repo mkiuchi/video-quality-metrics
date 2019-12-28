@@ -1,5 +1,11 @@
 This repository is abandoned because this codes did not produce the expected results.
 
+# 参考資料
+
+- https://videotech.densan-labs.net/articles/2017/09/01/analyze-video-quality.html
+- https://nico-lab.net/psnr_with_ffmpeg/
+- https://scikit-image.org/docs/stable/auto_examples/transform/plot_ssim.html#sphx-glr-auto-examples-transform-plot-ssim-py
+
 # エンコードしたビデオの品質評価を行う
 
 hevc_nvencよりもx265-VBRの方が仕上がりがいいのではないかということを定量的に示したかった。
@@ -34,3 +40,10 @@ Netflixのブログでは、MSE, PSNRだけではなく、SSIMにおいても類
 
 ![sample1](sample1.png)
 
+# あと言い残しておくこと
+
+- PSNR, SSIMを算出する実装はいくつかある
+    - scikit-image: https://scikit-image.org/docs/stable/auto_examples/transform/plot_ssim.html#sphx-glr-auto-examples-transform-plot-ssim-py 映像に対して実行するのは遅すぎて実用にならない
+    - TensorFlow: https://www.tensorflow.org/api_docs/python/tf/image/ssim_multiscale 試していない
+
+映像に関して私の観測範囲では、ffmpegにかけるのが実用的な唯一の選択。ただしVMAFについては実時間の5倍(x0.2)で実行されるので、網羅的に実行するのはむつかしいかもしれない。
